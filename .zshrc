@@ -35,6 +35,7 @@ function cf-kitty() {
 # PATHS
 export PATH="/usr/local/bin:$PATH"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh_secrets
 
 function tableplus() {
   open /Applications/TablePlus.app/Contents/MacOS/TablePlus
@@ -47,4 +48,4 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
 
 setopt PROMPT_SUBST
-PROMPT='[%F{blue}%1~%f] %F{red}${vcs_info_msg_0_}%f# '
+PROMPT='%F{#7e9cd8}[%1~]%f %F{#ff5d62}${vcs_info_msg_0_}%f$ '
