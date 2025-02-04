@@ -51,6 +51,6 @@ setopt PROMPT_SUBST
 PROMPT='%F{#7e9cd8}[%1~]%f %F{#ff5d62}${vcs_info_msg_0_}%f%F{#e6c384}#%f '
 
 # NEW TERMINAL SESSION MESSAGE
-echo -e "\033[32m┏━━━━━━━━━━━━━━━━━━━━━━┓\033[0m"
+echo -e "┏━━━━━━━━━━━━━━━━━━━━━━┓"
 echo -e "$(date +"%I:%M %p - %a, %m/%d/%y")"
-echo -e "\033[32m┗━━━━━━━━━━━━━━━━━━━━━━┛\033[0m"
+echo -e "┗━━━━━━━━━━━━━━━━━━━━━━┛"
