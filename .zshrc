@@ -2,16 +2,24 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
-export TERMINAL=kitty
+export TERMINAL=ghostty
 
 plugins=(
   git
-  zsh-autosuggestions
 )
-
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 
+# INITIALIZE SECRETS FILE
+[ -f ~/.zsh_secrets ] || touch ~/.zsh_secrets
+source ~/.zsh_secrets
+
 # SHORTCUTS
+function nv() {
+  nvim
+}
+
 function ncd() {
   cd "$1" && nvim
 }
@@ -26,12 +34,6 @@ function cfnvim() {
   nvim
 }
 
-function cfkitty() {
-  cd 
-  cd .config/kitty
-  nvim
-}
-
 function clear-swapfiles() {
   cd "$NVIM_SWAP_DIR" || return
   ls -la
@@ -41,11 +43,14 @@ function clear-swapfiles() {
 
 # PATHS
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@10/bin:$PATH"
 export PGDATA=/var/lib/postgresql/10/main/
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh_secrets
 export NVIM_SWAP_DIR="$HOME/.local/state/nvim/swap/"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 function tableplus() {
   open /Applications/TablePlus.app/Contents/MacOS/TablePlus
@@ -80,12 +85,9 @@ zstyle ':vcs_info:*:*' check-for-changes true
 # Set the right prompt to the vcs_info message
 RPROMPT='⎇ ${vcs_info_msg_0_}'
 
-# NEW TERMINAL SESSION MESSAGE
-#echo -e "┏━━━━━━━━━━━━━━━━━━━━━━┓"
-#echo -e "$(whoami) [ $(date +"%I:%M %p - %a, %m/%d/%y") ]"
-#echo -e "┗━━━━━━━━━━━━━━━━━━━━━━┛"
-echo -e "$(whoami)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Created by `pipx` on 2025-04-04 00:51:10
+export PATH="$PATH:/Users/bridgerb/.local/bin"
