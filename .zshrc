@@ -28,7 +28,7 @@ function cfzsh() {
   nvim ~/.zshrc
 }
 
-function cfnvim() {
+function cfnv() {
   cd 
   cd .config/nvim
   nvim
